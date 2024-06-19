@@ -15,7 +15,6 @@ import com.EmployeesMangementApi.Repositories.EmployeeRepository;
 
 
 @RestController
-
 public class EmployeeController {
 	
 	@Autowired

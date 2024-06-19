@@ -14,63 +14,57 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="EMP")
+@Table(name = "EMP")
 
 public class Employee {
-	
-	@Id
-	int EMPNO;
-	@Column
-	String ENAME;
-	@Column
-	String JOB;
-	
-	//Reflexive relation
-	@ManyToOne
-	@JoinColumn(name = "MGR")
-	Employee MGR;
-	@Column
-	Date HIREDATE	;
-	@Column
-	Double SAL	;
-	@Column
-	Double COMM	;
-	
-	
-	
-	@ManyToOne
-	@JoinColumn(name = "DEPTNO" )
-    Departement departement	;
-	
-	@OneToMany(mappedBy = "MGR", cascade = CascadeType.ALL)
+
+    @Id
+    int EMPNO;
+    @Column
+    String ENAME;
+    @Column
+    String JOB;
+
+    //Reflexive relation
+    @ManyToOne
+    @JoinColumn(name = "MGR")
+    Employee MGR;
+    @Column
+    Date HIREDATE;
+    @Column
+    Double SAL;
+    @Column
+    Double COMM;
+
+
+    @ManyToOne
+    @JoinColumn(name = "DEPTNO")
+    Department departement;
+
+    @OneToMany(mappedBy = "MGR", cascade = CascadeType.ALL)
     private List<Employee> employee;
-	
-	//constructors
-	
-	
-	
-	public Employee(int eMPNO, String eNAME, String jOB, Employee mGR, Date hIREDATE, Double sAL, Double cOMM,
-			 Departement dEPARTEMENT) {
-		
-		EMPNO = eMPNO;
-		ENAME = eNAME;
-		JOB = jOB;
-		MGR = mGR;
-		HIREDATE = hIREDATE;
-		SAL = sAL;
-		COMM = cOMM;
-		departement= dEPARTEMENT;
-	}
 
-  
-	public Employee() {
-		super();
-		
-	}
+    //constructors
 
 
+    public Employee(int eMPNO, String eNAME, String jOB, Employee mGR, Date hIREDATE, Double sAL, Double cOMM,
+                    Department dEPARTEMENT) {
+
+        EMPNO = eMPNO;
+        ENAME = eNAME;
+        JOB = jOB;
+        MGR = mGR;
+        HIREDATE = hIREDATE;
+        SAL = sAL;
+        COMM = cOMM;
+        departement = dEPARTEMENT;
+    }
 
 
-	
+    public Employee() {
+        super();
+
+    }
+
 
 }
